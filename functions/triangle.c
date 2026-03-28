@@ -16,6 +16,7 @@ int main()
     int base, height, area;
 
     printf("Base: ");
+    // This flushes the buffer
     fflush(stdout);
     scanf("%d", &base);
 
