@@ -14,7 +14,10 @@ int main()
     //     printf("It is %d\n", x);
     // }
 
-    int velocity;
+    int velocity, safespeed;
+
+    safespeed = 80;
+
     printf("How fast are you in km/h?\n");
     scanf("%d", &velocity);
 
@@ -22,8 +25,8 @@ int main()
     {
         printf("You are driving too fast!\n");
     }
-    
-    else if (velocity > 80)
+    // Comparing variables
+    else if (velocity > safespeed)
     {
         printf("You are driving safely\n");
     }
