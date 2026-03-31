@@ -3,3 +3,11 @@
 *~
 *.un~
 .*.un~
+
+# Compiled Binaries
+functions/triangle
+if_statements/if
+projects/golden_configMap
+random/random
+while_loops/countdown_while
+while_loops/while
