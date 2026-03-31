@@ -6,14 +6,14 @@
 
 // stdio.h
 // fclose() - closes file
-// fputs() - Writes byte string to a file stream
+// fputs()  - Writes byte string to a file stream
 // fread()  - read from a file
-// fopen() - opens file
+// fopen()  - opens file
 
 // stdlib.h
 // EXIT_FAILURE - Marco inidicating unsuccessful
 // program failure
-// NULL - Macro represting a null pointer constant
+// NULL         - Macro represting a null pointer constant
 
 // limits.h
 // CONST PATH_MAX - hands out the max bytes for
