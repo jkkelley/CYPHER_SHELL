@@ -6,7 +6,7 @@
 /* 
  Function to take user bet
  */
-int what_is_user_bet(int current_balance, void (*handler)())
+int what_is_user_bet(int current_balance, FILE *stream, void (*handler)())
 {
 
     int bet;
@@ -18,7 +18,7 @@ int what_is_user_bet(int current_balance, void (*handler)())
         printf("\nYour bet... $");
         fflush(stdout);
 
-        status = scanf("\n%d", &bet);
+        status = fscanf(stream, "\n%d", &bet);
 
         if (status == 1)
         {
@@ -45,7 +45,7 @@ int what_is_user_bet(int current_balance, void (*handler)())
 }
 
 /* Gets user guess and passes it on */
-int what_is_user_guess(int guess, void (*handler)())
+int what_is_user_guess(int guess, FILE *stream, void (*handler)())
 {
     int status;
 
@@ -54,7 +54,7 @@ int what_is_user_guess(int guess, void (*handler)())
         printf("\nGuess number between 1-6, zero for Quitters: ");
         fflush(stdout);
 
-        status = scanf("\n%d", &guess);
+        status = fscanf(stream, "\n%d", &guess);
 
         if (status == 1) // Success! We got an integer
         {
@@ -77,6 +77,7 @@ int what_is_user_guess(int guess, void (*handler)())
     }
 }
 
+/* Clear the file and buffer */
 void clear_input_buffer()
 {
     int c;
@@ -88,6 +89,9 @@ int main()
 {
     int balance;
     bool is_game_on;
+    
+    // Standard I/O streams are just pointers, so we pass 'stdin' here    
+    FILE *input_source = stdin;
 
     balance = 1000;
     is_game_on = true;
@@ -95,13 +99,14 @@ int main()
     while(is_game_on)
     {
         int guess;
+        int current_bet;
         
-        what_is_user_bet(balance, clear_input_buffer);
-        guess = what_is_user_guess(guess, clear_input_buffer);
+        current_bet = what_is_user_bet(balance, input_source, clear_input_buffer);
+        guess = what_is_user_guess(guess, input_source, clear_input_buffer);
 
-        printf("What is guess: %d\n", guess);
+        printf("\nWhat is guess: %d\n", guess);
 
-        printf("\nWe made it out of the bet.\n");
+        printf("\nCurrent bet: %d\n", current_bet);
 
         is_game_on = false;
     }
