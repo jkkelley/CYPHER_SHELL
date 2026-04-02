@@ -4,11 +4,22 @@
 *.un~
 .*.un~
 
-# Compiled Binaries
+# Ignore ALL object files anywhere in the repo
+*.o
+
+# Ignore ALL build directories anywhere in the repo
+# This covers projects/dice_game/build/ and any future ones!
+build/
+
+# --- Legacy Flat Binaries ---
+# (You can leave these here until you eventually upgrade these 
+# older projects to use Makefiles and build/ folders too)
 functions/triangle
 if_statements/if
 projects/golden_configMap
 random/random
 while_loops/countdown_while
 while_loops/while
-projects/dice_game/dice_game
+
+# OS-specific clutter
+.DS_Store
