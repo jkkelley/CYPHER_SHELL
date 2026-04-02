@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Compile the latest version
-gcc dice_game.c -o dice_game
-
 echo "Running Test 1: Quitting with 0"
 # Feed '5' for bet and '0' for guess to the program
-echo -e "5\n0" | ./dice_game | grep -q "Quitting game..."
+# Look for the output main() prints when it receives a 0
+printf "5\n0\n" | ./build/dice_game | grep -q "Thanks for playing!"
 
 if [ $? -eq 0 ]; then
     echo "✅ Test Passed: Program quit correctly."
@@ -15,7 +13,8 @@ fi
 
 echo "Running Test 2: Invalid Bet (Over Balance)"
 # Bet 2000 (over 1000 balance), then 10, then 0 to quit
-echo -e "2000\n10\n0" | ./dice_game | grep -q "Insufficient funds"
+# Update the grep string to match the new game_logic.c output
+echo -e "2000\n10\n0" | ./build/dice_game | grep -q "Invalid bet amount"
 
 if [ $? -eq 0 ]; then
     echo "✅ Test Passed: Over-bet handled."
