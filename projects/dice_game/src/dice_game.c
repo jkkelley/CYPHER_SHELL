@@ -32,7 +32,33 @@ int main()
 
         printf("\ndice roll: %d\n", dice_roll);
 
-        is_game_on = false;
+        // Check the comparsion of numbers
+        // If they don't match, sub from the balance
+        while (1)
+        {
+            if (guess != dice_roll && balance >= 0)
+            {
+                printf("\nSorry you lost\n");
+                // Subtract the bet from the balance
+                balance -= current_bet;
+                if (balance <= 0)
+                {
+                    printf("\nGame is over, balance went to $%d\n", balance);
+                    return 0; // Exit here if balance is 0 or less
+                }
+                break;
+            }
+            // If they DO match, multiply bet by three
+            // & add to the balance
+            else if (guess == dice_roll)
+            {
+                int user_winnings_before_balance = (current_bet * 3);
+                int user_winnings = (current_bet * 3) + balance;
+                printf("\nYou won $%d!\n", user_winnings_before_balance);
+                balance = user_winnings;
+                break;
+            }
+        }
     }
     return 0;
 }
