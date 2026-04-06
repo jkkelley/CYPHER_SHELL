@@ -23,3 +23,8 @@ while_loops/while
 
 # OS-specific clutter
 .DS_Store
+
+# Cursor IDE
+.cursor/
+.vscode/
+*.code-workspace

@@ -1,10 +1,11 @@
 #include "dice_game.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /* Function to take user bet */
 int what_is_user_bet(int current_balance, FILE *stream, void (*handler)())
-{
-    
+{    
     int bet;
     int status;
     
@@ -54,3 +55,28 @@ void clear_input_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
+
+/* Generate random number between 1-6 */
+int generate_guess_one_to_six(int max)
+{
+    int generated_number;
+
+    generated_number = rand() % max + 1;
+
+    return generated_number;
+}
+
+/* Return guess between 1-6 */
+int return_guess_one_to_six()
+{
+    int random_number;
+    
+    // Returns number 1-6
+    random_number = generate_guess_one_to_six(6);
+ 
+    printf("\nrandom number: %d\n", random_number);    
+
+    // Return the randomized number back to the game
+    return random_number;
+}
+
