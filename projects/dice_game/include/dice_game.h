@@ -13,4 +13,9 @@ void clear_input_buffer();
 int generate_guess_one_to_six(int max);
 int return_guess_one_to_six();
 
+// Game logic functions
+int calculate_loss(int balance, int bet);
+int calculate_winnings(int balance, int bet);
+int check_game_result(int guess, int dice_roll, int balance, int bet, int *new_balance);
+
 #endif

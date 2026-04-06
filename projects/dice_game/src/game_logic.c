@@ -80,3 +80,39 @@ int return_guess_one_to_six()
     return random_number;
 }
 
+/* Calculate new balance after a loss */
+int calculate_loss(int balance, int bet)
+{
+    return balance - bet;
+}
+
+/* Calculate new balance after a win (bet * 3 + balance) */
+int calculate_winnings(int balance, int bet)
+{
+    return (bet * 3) + balance;
+}
+
+/* Check game result and update balance
+ * Returns: 1 if won, 0 if lost, -1 if game over
+ * Updates new_balance via pointer
+ */
+int check_game_result(int guess, int dice_roll, int balance, int bet, int *new_balance)
+{
+    // Win condition
+    if (guess == dice_roll) {
+        *new_balance = calculate_winnings(balance, bet);
+        return 1;  // Win
+    }
+    
+    // Loss condition
+    *new_balance = calculate_loss(balance, bet);
+    
+    // Check if game over
+    if (*new_balance <= 0) {
+        return -1;  // Game over
+    }
+    
+    return 0;  // Lost but can continue
+}
+
+

@@ -171,6 +171,124 @@ void test_return_guess_range() {
     }
 }
 
+// ===== Game Logic Tests =====
+
+void test_calculate_loss_normal() {
+    int result = calculate_loss(1000, 100);
+    if (result == 900) {
+        printf("✅ test_calculate_loss_normal: Passed\n");
+    } else {
+        printf("❌ test_calculate_loss_normal: Failed (Expected 900, got %d)\n", result);
+    }
+}
+
+void test_calculate_loss_exact_balance() {
+    int result = calculate_loss(100, 100);
+    if (result == 0) {
+        printf("✅ test_calculate_loss_exact_balance: Passed\n");
+    } else {
+        printf("❌ test_calculate_loss_exact_balance: Failed (Expected 0, got %d)\n", result);
+    }
+}
+
+void test_calculate_loss_exceeds_balance() {
+    int result = calculate_loss(50, 100);
+    if (result == -50) {
+        printf("✅ test_calculate_loss_exceeds_balance: Passed\n");
+    } else {
+        printf("❌ test_calculate_loss_exceeds_balance: Failed (Expected -50, got %d)\n", result);
+    }
+}
+
+void test_calculate_winnings_normal() {
+    // Win: bet * 3 + balance
+    int result = calculate_winnings(1000, 100);
+    if (result == 1300) {  // 100*3 + 1000
+        printf("✅ test_calculate_winnings_normal: Passed\n");
+    } else {
+        printf("❌ test_calculate_winnings_normal: Failed (Expected 1300, got %d)\n", result);
+    }
+}
+
+void test_calculate_winnings_small_bet() {
+    int result = calculate_winnings(1000, 1);
+    if (result == 1003) {  // 1*3 + 1000
+        printf("✅ test_calculate_winnings_small_bet: Passed\n");
+    } else {
+        printf("❌ test_calculate_winnings_small_bet: Failed (Expected 1003, got %d)\n", result);
+    }
+}
+
+void test_calculate_winnings_large_bet() {
+    int result = calculate_winnings(1000, 500);
+    if (result == 2500) {  // 500*3 + 1000
+        printf("✅ test_calculate_winnings_large_bet: Passed\n");
+    } else {
+        printf("❌ test_calculate_winnings_large_bet: Failed (Expected 2500, got %d)\n", result);
+    }
+}
+
+void test_check_game_result_win() {
+    int new_balance;
+    int result = check_game_result(3, 3, 1000, 100, &new_balance);
+    
+    if (result == 1 && new_balance == 1300) {
+        printf("✅ test_check_game_result_win: Passed\n");
+    } else {
+        printf("❌ test_check_game_result_win: Failed (Expected result=1, balance=1300, got result=%d, balance=%d)\n", 
+               result, new_balance);
+    }
+}
+
+void test_check_game_result_loss_continue() {
+    int new_balance;
+    int result = check_game_result(3, 5, 1000, 100, &new_balance);
+    
+    if (result == 0 && new_balance == 900) {
+        printf("✅ test_check_game_result_loss_continue: Passed\n");
+    } else {
+        printf("❌ test_check_game_result_loss_continue: Failed (Expected result=0, balance=900, got result=%d, balance=%d)\n", 
+               result, new_balance);
+    }
+}
+
+void test_check_game_result_game_over_exact() {
+    int new_balance;
+    int result = check_game_result(3, 5, 100, 100, &new_balance);
+    
+    if (result == -1 && new_balance == 0) {
+        printf("✅ test_check_game_result_game_over_exact: Passed\n");
+    } else {
+        printf("❌ test_check_game_result_game_over_exact: Failed (Expected result=-1, balance=0, got result=%d, balance=%d)\n", 
+               result, new_balance);
+    }
+}
+
+void test_check_game_result_game_over_negative() {
+    int new_balance;
+    int result = check_game_result(3, 5, 50, 100, &new_balance);
+    
+    if (result == -1 && new_balance == -50) {
+        printf("✅ test_check_game_result_game_over_negative: Passed\n");
+    } else {
+        printf("❌ test_check_game_result_game_over_negative: Failed (Expected result=-1, balance=-50, got result=%d, balance=%d)\n", 
+               result, new_balance);
+    }
+}
+
+void test_check_game_result_boundary_values() {
+    int new_balance;
+    
+    // Test with minimum valid values
+    int result = check_game_result(1, 1, 10, 1, &new_balance);
+    if (result == 1 && new_balance == 13) {
+        printf("✅ test_check_game_result_boundary_values: Passed\n");
+    } else {
+        printf("❌ test_check_game_result_boundary_values: Failed (Expected result=1, balance=13, got result=%d, balance=%d)\n", 
+               result, new_balance);
+    }
+}
+
 int main() {
     printf("=== Running Unit Tests ===\n\n");
     
@@ -185,6 +303,19 @@ int main() {
     test_generate_guess_max_one();
     test_generate_guess_distribution();
     test_return_guess_range();
+    
+    printf("\n--- Game Logic Tests ---\n");
+    test_calculate_loss_normal();
+    test_calculate_loss_exact_balance();
+    test_calculate_loss_exceeds_balance();
+    test_calculate_winnings_normal();
+    test_calculate_winnings_small_bet();
+    test_calculate_winnings_large_bet();
+    test_check_game_result_win();
+    test_check_game_result_loss_continue();
+    test_check_game_result_game_over_exact();
+    test_check_game_result_game_over_negative();
+    test_check_game_result_boundary_values();
     
     printf("\n=== Unit Tests Complete ===\n");
     return 0;
