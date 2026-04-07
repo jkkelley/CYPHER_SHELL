@@ -14,14 +14,15 @@ build/
 # --- Legacy Flat Binaries ---
 # (You can leave these here until you eventually upgrade these 
 # older projects to use Makefiles and build/ folders too)
-functions/triangle
-if_statements/if
-projects/golden_configMap
-random/random
-while_loops/countdown_while
-while_loops/while
-sockets/sockets
-sockets/sockets2
+sandbox/functions/triangle
+sandbox/if_statements/if
+sandbox/projects/golden_configMap
+sandbox/random/random
+sandbox/while_loops/countdown_while
+sandbox/while_loops/while
+projects/sockets/sockets
+projects/sockets/get_sockets
+projects/aws_instance_costs/instance_costs
 
 # OS-specific clutter
 .DS_Store
