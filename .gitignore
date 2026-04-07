@@ -20,6 +20,8 @@ projects/golden_configMap
 random/random
 while_loops/countdown_while
 while_loops/while
+sockets/sockets
+sockets/sockets2
 
 # OS-specific clutter
 .DS_Store

@@ -38,7 +38,7 @@ int main()
         printf("connect() error\n");
         close(s);
 
-        return -1;
+        return -1; // exit out
     }
 
     write(s, data, strlen(data));
