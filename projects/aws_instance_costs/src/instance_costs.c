@@ -45,7 +45,7 @@ int main()
 
     printf("\n--- Infrastructure Report ---\n");
     printf("Instance Type: %s\n", my_instance.ec2_instance_size);
-    printf("Hourly Rate: $%f\n", my_instance.cost_of_server_by_hour);
+    printf("Hourly Rate: $%.2f\n", my_instance.cost_of_server_by_hour);
 
     return 0; // exit out of here
  }
