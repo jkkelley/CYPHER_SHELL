@@ -17,7 +17,7 @@ build/
 sandbox/binary_search/binary_search
 sandbox/functions/triangle
 sandbox/if_statements/if
-sandbox/projects/golden_configMap
+sandbox/k8s_make_configMaps/golden_configMap
 sandbox/random/random
 sandbox/selection_sort/selection_sort
 sandbox/while_loops/countdown_while
