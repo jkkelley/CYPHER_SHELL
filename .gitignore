@@ -14,6 +14,7 @@ build/
 # --- Legacy Flat Binaries ---
 # (You can leave these here until you eventually upgrade these 
 # older projects to use Makefiles and build/ folders too)
+sandbox/binary_search/binary_search
 sandbox/functions/triangle
 sandbox/if_statements/if
 sandbox/projects/golden_configMap
