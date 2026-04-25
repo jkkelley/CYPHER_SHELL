@@ -19,6 +19,7 @@ sandbox/functions/triangle
 sandbox/if_statements/if
 sandbox/projects/golden_configMap
 sandbox/random/random
+sandbox/selection_sort/selection_sort
 sandbox/while_loops/countdown_while
 sandbox/while_loops/while
 projects/sockets/sockets
