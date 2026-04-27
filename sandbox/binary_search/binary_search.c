@@ -74,7 +74,7 @@ int main()
 		my_list[i] = i;
 	}
 	
-	int target = 33; // The number we've choosen
+	int target = 700000; // The number we've choosen
 	
 	int result = binary_search(my_list, SIZE, target);
 	

@@ -19,6 +19,7 @@ sandbox/functions/triangle
 sandbox/if_statements/if
 sandbox/k8s_make_configMaps/golden_configMap
 sandbox/random/random
+sandbox/recursion/recursion
 sandbox/selection_sort/selection_sort
 sandbox/while_loops/countdown_while
 sandbox/while_loops/while
